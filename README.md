@@ -5,7 +5,7 @@
 ### RWMidi
 
 1. Open **Terminal** and create a folder for Processing to rwmidi library: _mkdir -p ~/Documents/Processing/librairies/rwmidi/library/_
-1. Copy [RWMidi][http://www.ruinwesen.com/support-files/rwmidi/documentation/RWMidi.html] lib to in Processing folder: _cp ./software/lib/rwmidi/rwmidi.jar ~/Documents/Processing/librairies/rwmidi/library/_
+1. Copy [RWMidi][] lib to in Processing folder: _cp ./software/lib/rwmidi/rwmidi.jar ~/Documents/Processing/librairies/rwmidi/library/_
 
 ### MIDI Driver Setup
 
@@ -36,3 +36,5 @@ Open **Arduino**, and load the firmware from _./hardware/arduino/firmware/firmwa
 ### Processing
 
 Open **Processing**, and launch sketch from _./software/processing/serial/serial.pde_
+
+[RWMidi]:   http://www.ruinwesen.com/support-files/rwmidi/documentation/RWMidi.html
