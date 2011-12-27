@@ -17,28 +17,22 @@ var board = new firmata.Board(usb,function(){
   for (var i = 0; i < address.length; i++) {
     console.log("address: " + address[i]);
     // blink 0 aan, 0x10 is glob uit
-    board.sendI2CWriteRequest(address[i], 0xF);
-    board.sendI2CWriteRequest(address[i], 0x10);
+    board.sendI2CWriteRequest(address[i], [0xF, 0x10]);
 
     // input en output config.
-    board.sendI2CWriteRequest(address[i], 0x6);
-    board.sendI2CWriteRequest(address[i], 0x00);
+    board.sendI2CWriteRequest(address[i], [0x6, 0x00]);
 
     // oninterresante getallen, afblijven!!
-    board.sendI2CWriteRequest(address[i], 0x7);
-    board.sendI2CWriteRequest(address[i], 0x00);
+    board.sendI2CWriteRequest(address[i], [0x7, 0x00]);
 
     // global intensity reg.
-    board.sendI2CWriteRequest(address[i], 0x2);
-    board.sendI2CWriteRequest(address[i], 0xFF);
+    board.sendI2CWriteRequest(address[i], [0x2, 0xFF]);
 
     // Register 3
-    board.sendI2CWriteRequest(address[i], 0x3);
-    board.sendI2CWriteRequest(address[i], 0xFF);
+    board.sendI2CWriteRequest(address[i], [0x3, 0xFF]);
 
     // config bit
-    board.sendI2CWriteRequest(address[i], 0xe);
-    board.sendI2CWriteRequest(address[i], 0xFF);
+    board.sendI2CWriteRequest(address[i], [0xe, 0xFF]);
   }
 
   console.log("end config");
@@ -46,9 +40,8 @@ var board = new firmata.Board(usb,function(){
   // Led ON
   for (var i = 0; i < address.length; i++) {
     console.log("led: " + address[i]);
-    board.sendI2CWriteRequest(address[i], 0x10);
     for (var j = 0; j < 8; j++) {
-      board.sendI2CWriteRequest(address[i], 0xFF);
+      board.sendI2CWriteRequest(address[i], [0x10, 0xFF]);
     };
   }
 
