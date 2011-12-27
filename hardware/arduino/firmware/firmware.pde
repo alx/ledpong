@@ -122,13 +122,13 @@ void SendCol(byte addr, byte reg, byte colData[])
 {
 
   Wire.beginTransmission(addr);
-  Wire.send( reg);
+  Wire.write( reg);
   //     Serial.print("Maxaddress :");
   //     Serial.print(addr,HEX); // debug
 
 
     for (int i=0;i<8;i++){
-    Wire.send( colData[i]);
+    Wire.write( colData[i]);
     //     Serial.println(i,DEC); // debug
     //     Serial.print("< N Ligne / HEX Value : ");
     //     Serial.println(colData[i],HEX); // debug
@@ -141,8 +141,8 @@ void Send(byte addr, byte reg, byte data)
 {
 
   Wire.beginTransmission(addr);
-  Wire.send( reg);
-  Wire.send( data);
+  Wire.write( reg);
+  Wire.write( data);
   Wire.endTransmission();
 }
 
