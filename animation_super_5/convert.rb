@@ -87,8 +87,15 @@ def export_html(path, json, zprotocol)
   end
 end
 
+def export_zprotocol(zprotocol)
+  File.open("zprotocol.txt", 'a') do |file|
+    file.puts zprotocol
+  end
+end
+
 Dir.glob("*.gif").each do |file|
   zprotocol = imageToZprotocol(file)
   json = zprotocolToJson(zprotocol)
   export_html("demo/#{file.gsub(".gif", "")}.html", json, zprotocol)
+  export_zprotocol zprotocol
 end
