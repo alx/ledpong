@@ -99,3 +99,20 @@ Dir.glob("*.gif").each do |file|
   export_html("demo/#{file.gsub(".gif", "")}.html", json, zprotocol)
   export_zprotocol zprotocol
 end
+
+def export_serial
+  File.open("serial.rb", "w") do |file|
+    file.puts <<-eos
+require 'serialport'
+arduino_tty = "/dev/"
+serial_port = SerialPort.new arduino_tty, 38400
+    eos
+    File.open("zprotocol.txt", 'r') do |zprotocol|
+      while line = zprotocol.gets
+        file.puts "serial_port.write \"#{line.strip}\""
+      end
+    end
+  end
+end
+
+export_serial
